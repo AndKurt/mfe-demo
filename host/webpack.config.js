@@ -34,6 +34,9 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
+        options: {
+          transpileOnly: true,
+        },
       },
     ],
   },
@@ -47,18 +50,22 @@ module.exports = {
         ...deps,
         react: {
           singleton: true,
+          eager: true,
           requiredVersion: deps.react,
         },
         'react-dom': {
           singleton: true,
+          eager: true,
           requiredVersion: deps['react-dom'],
         },
         'react-redux': {
           singleton: true,
+          eager: true,
           requiredVersion: deps['react-redux'],
         },
         'shared-redux': {
           singleton: true,
+          eager: true,
           requiredVersion: deps['shared-redux'],
         },
       },
