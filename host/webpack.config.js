@@ -1,5 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const deps = require('./package.json').dependencies
 
@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/index.ts',
   mode: 'development',
   devServer: {
-    port: 3002,
+    port: 3001,
     hot: true,
     historyApiFallback: true,
     headers: {
@@ -18,8 +18,8 @@ module.exports = {
     },
   },
   output: {
-    publicPath: 'http://localhost:3002/',
-    uniqueName: 'auth',
+    publicPath: 'http://localhost:3001/',
+    uniqueName: 'host',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -34,19 +34,14 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
-        options: {
-          transpileOnly: true, // для ускорения
-        },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'auth',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './LoginForm': './src/components/LoginForm/index.ts',
-        //'./UserProfile': './src/components/UserProfile',
+      name: 'host',
+      remotes: {
+        auth: 'auth@http://localhost:3002/remoteEntry.js',
       },
       shared: {
         ...deps,
