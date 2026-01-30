@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run start:host\" \"npm run start:auth\"",
+    "start": "concurrently \"npm run start:host\" \"npm run start:auth\" \"npm run start:dashboard\"",
     "start:host": "cd ./host && npm start",
     "start:auth": "cd ./auth && npm start",
+    "start:dashboard": "cd ./dashboard && npm start",
     "build": "npm run build --workspaces"
   },
   "repository": {

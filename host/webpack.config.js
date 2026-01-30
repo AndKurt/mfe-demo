@@ -26,6 +26,8 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@components': path.resolve(__dirname, 'src/components'),
+      // Отключаем stream-json-rpc для браузерного бандла (используется только на Node-стороне shared-redux)
+      'stream-json-rpc': false,
     },
   },
   module: {
@@ -45,9 +47,14 @@ module.exports = {
       name: 'host',
       remotes: {
         auth: 'auth@http://localhost:3002/remoteEntry.js',
+        dashboard: 'dashboard@http://localhost:3003/remoteEntry.js',
       },
       shared: {
-        ...deps,
+        '@reduxjs/toolkit': {
+          singleton: true,
+          eager: true,
+          requiredVersion: deps['@reduxjs/toolkit'],
+        },
         react: {
           singleton: true,
           eager: true,

@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/index.ts',
   mode: 'development',
   devServer: {
-    port: 3002,
+    port: 3003,
     hot: true,
     historyApiFallback: true,
     headers: {
@@ -18,7 +18,7 @@ module.exports = {
     },
   },
   output: {
-    publicPath: 'http://localhost:3002/',
+    publicPath: 'http://localhost:3003/',
     uniqueName: 'auth',
   },
   resolve: {
@@ -42,11 +42,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'auth',
+      name: 'dashboard',
       filename: 'remoteEntry.js',
       exposes: {
-        './LoginForm': './src/components/LoginForm/index.ts',
-        './UserProfile': './src/components/UserProfile/index.ts',
+        './Counter': './src/components/Counter/index.ts',
+        './Notifications': './src/components/Notifications'
       },
       shared: {
         '@reduxjs/toolkit': {
