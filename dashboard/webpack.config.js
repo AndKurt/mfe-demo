@@ -51,27 +51,22 @@ module.exports = {
       shared: {
         '@reduxjs/toolkit': {
           singleton: true,
-          eager: true,
           requiredVersion: deps['@reduxjs/toolkit'],
         },
         react: {
           singleton: true,
-          eager: true,
           requiredVersion: deps.react,
         },
         'react-dom': {
           singleton: true,
-          eager: true,
           requiredVersion: deps['react-dom'],
         },
         'react-redux': {
           singleton: true,
-          eager: true,
           requiredVersion: deps['react-redux'],
         },
         'shared-redux': {
           singleton: true,
-          eager: true, // Немедленно загружать shared-redux при сборке модуля
           requiredVersion: deps['shared-redux'],
         },
       },

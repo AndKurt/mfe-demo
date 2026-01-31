@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from 'shared-redux'
 
 // Динамическая загрузка remote-компонентов
+// Компоненты загружаются по статическим путям
 const LoginForm = lazy(() =>
   import('auth/LoginForm')
     .then((module: any) => {

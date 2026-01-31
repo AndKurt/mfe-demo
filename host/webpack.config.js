@@ -46,6 +46,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'host',
       remotes: {
+        // BUILD-TIME: Адреса жестко прописаны
         auth: 'auth@http://localhost:3002/remoteEntry.js',
         dashboard: 'dashboard@http://localhost:3003/remoteEntry.js',
       },
