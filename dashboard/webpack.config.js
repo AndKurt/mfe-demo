@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     publicPath: 'http://localhost:3003/',
-    uniqueName: 'auth',
+    uniqueName: 'dashboard',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -46,7 +46,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './Counter': './src/components/Counter/index.ts',
-        './Notifications': './src/components/Notifications'
+        './Notifications': './src/components/Notifications',
       },
       shared: {
         '@reduxjs/toolkit': {
