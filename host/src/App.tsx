@@ -1,57 +1,35 @@
-import React, { Suspense, lazy } from 'react'
-import { Loading } from '@components'
+import React, { Suspense } from 'react'
+import { createRemoteComponent, Loading } from '@components'
 import { useSelector } from 'react-redux'
 import { RootState } from 'shared-redux'
 
-// Динамическая загрузка remote-компонентов
-// Компоненты загружаются по статическим путям
-const LoginForm = lazy(() =>
-  import('auth/LoginForm')
-    .then((module: any) => {
-      const Component = module.LoginForm
-      return { default: Component }
-    })
-    .catch((error) => {
-      console.error('Failed to load module:', error)
-      return { default: () => <div>Module failed to load: LoginForm</div> }
-    })
-)
+const LoginForm = createRemoteComponent({
+  remote: 'auth',
+  module: './LoginForm',
+  exportName: 'LoginForm',
+  retries: 3,
+})
 
-const UserProfile = lazy(() =>
-  import('auth/UserProfile')
-    .then((module: any) => {
-      const Component = module.UserProfile
-      return { default: Component }
-    })
-    .catch((error) => {
-      console.error('Failed to load module:', error)
-      return { default: () => <div>Module failed to load: UserProfile</div> }
-    })
-)
+const UserProfile = createRemoteComponent({
+  remote: 'auth',
+  module: './UserProfile',
+  exportName: 'UserProfile',
+  retries: 3,
+})
 
-const Counter = lazy(() =>
-  import('dashboard/Counter')
-    .then((module: any) => {
-      const Component = module.Counter
-      return { default: Component }
-    })
-    .catch((error) => {
-      console.error('Failed to load module:', error)
-      return { default: () => <div>Module failed to load: Counter</div> }
-    })
-)
+const Counter = createRemoteComponent({
+  remote: 'dashboard',
+  module: './Counter',
+  exportName: 'Counter',
+  retries: 3,
+})
 
-const Notifications = lazy(() =>
-  import('dashboard/Notifications')
-    .then((module: any) => {
-      const Component = module.Notifications
-      return { default: Component }
-    })
-    .catch((error) => {
-      console.error('Failed to load module:', error)
-      return { default: () => <div>Module failed to load: Notifications</div> }
-    })
-)
+const Notifications = createRemoteComponent({
+  remote: 'dashboard',
+  module: './Notifications',
+  exportName: 'Notifications',
+  retries: 3,
+})
 
 export const App: React.FC = () => {
   const user = useSelector((state: RootState) => state.user)

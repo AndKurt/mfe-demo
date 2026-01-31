@@ -2,6 +2,7 @@ const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const deps = require('./package.json').dependencies
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: './src/index.ts',
@@ -26,7 +27,8 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@components': path.resolve(__dirname, 'src/components'),
-      // Отключаем stream-json-rpc для браузерного бандла (используется только на Node-стороне shared-redux)
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
       'stream-json-rpc': false,
     },
   },
@@ -43,13 +45,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(), // Для работы env переменных
     new ModuleFederationPlugin({
       name: 'host',
-      remotes: {
-        // BUILD-TIME: Адреса жестко прописаны
-        auth: 'auth@http://localhost:3002/remoteEntry.js',
-        dashboard: 'dashboard@http://localhost:3003/remoteEntry.js',
-      },
+      // RUNTIME: Убираем статический remotes
+      // remotes будут загружаться динамически через loadRemote utility
+      remotes: {},
       shared: {
         '@reduxjs/toolkit': {
           singleton: true,

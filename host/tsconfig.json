@@ -8,8 +8,14 @@
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"],
-      "@components/*": ["src/components/*"],
+      "@config": ["src/config/"],
+      "@config/*": ["src/config/*"],
       "@components": ["src/components/"],
+      "@components/*": ["src/components/*"],
+      "@hooks": ["src/hooks/"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils": ["src/utils/"],
+      "@utils/*": ["src/utils/*"],
       "shared-redux": ["../shared-redux/dist"]
     },
     "allowJs": true,

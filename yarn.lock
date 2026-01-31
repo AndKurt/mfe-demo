@@ -1841,6 +1841,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-defaults@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "dotenv-defaults@npm:2.0.2"
+  dependencies:
+    dotenv: "npm:^8.2.0"
+  checksum: 10/e0cf2a499119ff0dbc6565aa7914bd0f0c42dc331790037cefe2215bf6620c2a4167a1ef2a29331e6d223f445329e1f7c7e3e7e8c647fd3b6ccb59e4c138b7ba
+  languageName: node
+  linkType: hard
+
+"dotenv-webpack@npm:8.1.1":
+  version: 8.1.1
+  resolution: "dotenv-webpack@npm:8.1.1"
+  dependencies:
+    dotenv-defaults: "npm:^2.0.2"
+  peerDependencies:
+    webpack: ^4 || ^5
+  checksum: 10/99bc25a711f979948a4907cc31757ba392e5a56cf6d1399512d37dddda23e08a747dede72c4f84f79a7bbdb14a4eee302a9a591cef2f332346bc4a1d4cbf9bff
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^8.2.0":
+  version: 8.6.0
+  resolution: "dotenv@npm:8.6.0"
+  checksum: 10/31d7b5c010cebb80046ba6853d703f9573369b00b15129536494f04b0af4ea0060ce8646e3af58b455af2f6f1237879dd261a5831656410ec92561ae1ea44508
+  languageName: node
+  linkType: hard
+
 "dunder-proto@npm:^1.0.1":
   version: 1.0.1
   resolution: "dunder-proto@npm:1.0.1"
@@ -2391,6 +2418,7 @@ __metadata:
     "@types/react-router-dom": "npm:5.3.3"
     auth: "npm:*"
     clsx: "npm:2.1.1"
+    dotenv-webpack: "npm:8.1.1"
     html-webpack-plugin: "npm:5.6.6"
     react: "npm:19.2.4"
     react-dom: "npm:19.2.4"
