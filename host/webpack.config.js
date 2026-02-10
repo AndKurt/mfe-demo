@@ -52,7 +52,9 @@ module.exports = {
       },
       shared: {
         '@reduxjs/toolkit': {
+          // приложения используют один экземпляр библиотеки
           singleton: true,
+          // загружает удалённый модуль немедленно и синхронно при загрузке host-приложения, а не лениво по требованию
           eager: true,
           requiredVersion: deps['@reduxjs/toolkit'],
         },
